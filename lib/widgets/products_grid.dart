@@ -5,6 +5,8 @@ import 'package:shop_flutter/widgets/product_item.dart';
 import '../providers/products.dart';
 
 class ProductsGrid extends StatelessWidget {
+  const ProductsGrid({super.key});
+
   @override
   Widget build(BuildContext context) {
     print("ProductsGrid build");
