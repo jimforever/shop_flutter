@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shop_flutter/widgets/badge.dart';
 
+import '../providers/cart.dart';
 import '../providers/products.dart';
 import '../widgets/products_grid.dart';
 
@@ -17,7 +19,7 @@ class _ProductsOVerviewScreenState extends State<ProductsOVerviewScreen> {
   var _showOnlyFacorites = false;
   @override
   Widget build(BuildContext context) {
-    final productsContainer = Provider.of<Products>(context,listen: false);
+    final productsContainer = Provider.of<Products>(context, listen: false);
     return Scaffold(
       appBar: AppBar(title: const Text('MyShop'), actions: [
         PopupMenuButton(
@@ -28,9 +30,7 @@ class _ProductsOVerviewScreenState extends State<ProductsOVerviewScreen> {
                 } else {
                   _showOnlyFacorites = false;
                 }
-
               });
-
             },
             icon: const Icon(Icons.more_vert),
             itemBuilder: (_) => [
@@ -42,9 +42,19 @@ class _ProductsOVerviewScreenState extends State<ProductsOVerviewScreen> {
                     value: FilterOptions.All,
                     child: Text('Show All'),
                   ),
-                ])
+                ]),
+        Consumer<Cart>(
+          builder: (_, cart, cd) => Badge(
+            child: cd!,
+            value: cart.itemCount.toString(),
+          ),
+          child: IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: () {},
+          ),
+        )
       ]),
-      body:  ProductsGrid(_showOnlyFacorites),
+      body: ProductsGrid(_showOnlyFacorites),
     );
   }
 }
