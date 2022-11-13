@@ -4,6 +4,7 @@ import 'package:shop_flutter/providers/cart.dart';
 import 'package:shop_flutter/providers/order.dart';
 import 'package:shop_flutter/providers/products.dart';
 import 'package:shop_flutter/screens/cart_screen.dart';
+import 'package:shop_flutter/screens/orders_screen.dart';
 import 'package:shop_flutter/screens/product_detail_screen.dart';
 import 'package:shop_flutter/screens/products_overview_screen.dart';
 
@@ -26,10 +27,11 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         theme: ThemeData(
             primarySwatch: Colors.purple, accentColor: Colors.deepOrange),
-        home: ProductsOVerviewScreen(),
+        home: const ProductsOVerviewScreen(),
         routes: {
-          ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
-          CartScreen.routeName: (ctx) => CartScreen()
+          ProductDetailScreen.routeName: (ctx) => const ProductDetailScreen(),
+          CartScreen.routeName: (ctx) => CartScreen(),
+          OrdersScreen.rounteName:(ctx) => const OrdersScreen()
         },
       ),
     );
